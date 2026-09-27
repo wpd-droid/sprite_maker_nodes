@@ -67,7 +67,6 @@ class SpritePromptGenerator:
 
         prompts, filenames, seeds = [], [], []
         used_names = set()
-        prefix = filename_part(character_name) + "_" if character_name.strip() else ""
         for name, description in entries:
             prompt = " ".join(part.strip() for part in (template, style) if part.strip())
             has_face_detail = "{face detail}" in prompt or "{face_detail}" in prompt
@@ -75,8 +74,8 @@ class SpritePromptGenerator:
             if face_detail.strip() and not has_face_detail:
                 prompt = f"{prompt} Character details: {face_detail.strip()}".strip()
             for repeat in range(repeats):
-                suffix = f"_{repeat + 1:02d}" if repeats > 1 else ""
-                filename = prefix + filename_part(name) + suffix
+                suffix = f"-{repeat + 1:02d}" if repeats > 1 else ""
+                filename = filename_part(name) + suffix
                 unique_name = filename
                 counter = 2
                 while unique_name.casefold() in used_names:

@@ -12,13 +12,13 @@ Place this repository in `ComfyUI/custom_nodes/expression_nodes` and restart Com
 One prompt node for reference-based sprite creation, expression batches, and touch-up edits. Restart ComfyUI after installing or updating these nodes.
 
 - `mode`: **Base** produces a neutral base prompt, **Expressions** produces the expression list, and **Edit** produces a touch-up prompt.
-- `character_name`: Used for image and archive names, e.g. `Blair_Joy` and `Blair Expressions`.
+- `character_name`: Used for the archive name, e.g. `Blair Expressions`. Image filenames use only the expression, e.g. `Joy`.
 - `base_prompt`, `expression_template`, `edit_prompt`: Editable instructions for each mode.
 - `style`: Shared instructions appended to the selected prompt.
 - `face_detail`: Replaces `{face detail}` or `{face_detail}`; appended when neither placeholder is present.
 - `expressions`: Blank uses the original 28 expressions in their original order. Otherwise enter one per line, optionally as `Joy | a broad happy smile` to separate the filename from the expression description.
 - `additional_expressions`: Appends custom entries after the default 28 or your selected `expressions`. Uses the same `Name | description` format; descriptions replace `{expression}` in the template and receive the shared style and face details. Only used in Expressions mode. Blank lines are ignored and duplicate filenames receive suffixes.
-- `repeats`: Variants per expression/base/edit. Repeated filenames get `_01`, `_02`, etc.
+- `repeats`: Variants per expression/base/edit. Repeated filenames get `-01`, `-02`, etc.
 - `seed`: Each repeat increments the seed. The same repeat uses the same seed across expressions.
 
 For example, leave `expressions` blank and enter this in `additional_expressions` to generate 30 expressions:
